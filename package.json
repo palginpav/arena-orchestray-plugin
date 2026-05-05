@@ -1,6 +1,6 @@
 {
   "name": "arena-orchestray-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Orchestray plugin: adversarial-refinement of custom agents via PM-driven in-conversation sparring.",
   "keywords": [
     "orchestray",
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/palginpav/arena-orchestray-plugin.git"
   },
-  "author": "palginpav <palginpav@gmail.com>",
+  "author": "Pavel Palgin <pavel.palgin@gmail.com>",
   "engines": {
     "node": ">=20"
   },

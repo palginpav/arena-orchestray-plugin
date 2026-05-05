@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+Patch: corrected author email in package.json (pavel.palgin@gmail.com).
+No code changes.
+
 ## 0.1.0
 
 Initial release. Orchestray plugin for adversarial refinement of custom agents.
