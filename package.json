@@ -2,6 +2,24 @@
   "name": "arena-orchestray-plugin",
   "version": "0.1.0",
   "description": "Orchestray plugin: adversarial-refinement of custom agents via PM-driven in-conversation sparring.",
+  "keywords": [
+    "orchestray",
+    "orchestray-plugin",
+    "claude-code",
+    "mcp",
+    "custom-agents",
+    "adversarial-refinement",
+    "agent-tooling"
+  ],
+  "homepage": "https://github.com/palginpav/arena-orchestray-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/palginpav/arena-orchestray-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palginpav/arena-orchestray-plugin.git"
+  },
+  "author": "palginpav <palginpav@gmail.com>",
   "engines": {
     "node": ">=20"
   },
