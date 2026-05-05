@@ -1,0 +1,25 @@
+{
+  "name": "arena-orchestray-plugin",
+  "version": "0.1.0",
+  "description": "Orchestray plugin: adversarial-refinement of custom agents via PM-driven in-conversation sparring.",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "orchestray-plugin.json",
+    "server.js",
+    "lib/",
+    "bin/arena-doctor.js",
+    "README.md",
+    "CHANGELOG.md",
+    "docs/"
+  ],
+  "scripts": {
+    "test": "node --test 'tests/**/*.test.js'",
+    "smoke": "node bin/arena-smoke.js"
+  },
+  "dependencies": {
+    "zod": "^3.23.0"
+  },
+  "license": "MIT"
+}

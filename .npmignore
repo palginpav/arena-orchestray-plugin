@@ -1,0 +1,6 @@
+tests/
+archive/
+.orchestray/
+out/
+.tmp/
+*.snap

@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Runtime outputs
+out/
+.tmp/
+prototype/out/
+
+# Environment / secrets
+.env
+.env.*
+
+# Orchestration internals + agent memory (LOCAL ONLY — never ships)
+.orchestray/
+.claude/
+
+# Editor / OS junk
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# npm scratch
+npm-debug.log
+.npm/

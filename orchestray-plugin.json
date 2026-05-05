@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "arena",
+  "version": "0.1.0",
+  "description": "Adversarial-refinement plugin for Orchestray. PM acts as both Required and Challenger in live in-conversation roleplay; emits a refined custom-agent .md to ~/.claude/orchestray/custom-agents/. No Anthropic API calls; subscription-model only.",
+  "entrypoint": "server.js",
+  "transport": "stdio",
+  "runtime": "node",
+  "tools": [
+    {
+      "name": "arena-create",
+      "description": "Begin creating a new Arena-trained custom agent. Returns the full sparring protocol the PM follows: draft v0 system prompt, write via arena-emit, run 3 rounds of in-conversation Required/Challenger sparring, emit v1.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["description"],
+        "properties": {
+          "description": { "type": "string", "minLength": 8, "maxLength": 1000 },
+          "suggested_slug": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,47}$" },
+          "output_dir": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "arena-refine",
+      "description": "Begin refining an existing custom agent through Arena sparring. Returns the protocol for loading the target, running 3 rounds of Required/Challenger critique, emitting <slug>-arena-vN.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["target"],
+        "properties": {
+          "target": { "type": "string", "description": "Either a slug like 'my-translator' (resolved against custom-agents dir) or an absolute path to a .md file." },
+          "output_dir": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "arena-emit",
+      "description": "Validator-bound atomic write of a custom-agent .md to ~/.claude/orchestray/custom-agents/. Runs Orchestray's validateCustomAgentFile() before write; rejects on validation failure. The PM crafts the content; this tool only validates and writes.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["slug", "content"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,47}$" },
+          "content": { "type": "string", "minLength": 50, "maxLength": 204800 },
+          "output_dir": { "type": "string" },
+          "overwrite": { "type": "boolean", "default": false },
+          "dry_run": { "type": "boolean", "default": false }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "arena-list",
+      "description": "List Arena-trained custom agents under the custom-agents dir.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dir": { "type": "string" },
+          "include_v0": { "type": "boolean", "default": true }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "arena-doctor",
+      "description": "Re-validate emitted Arena agent files against the current orchestray validator. Returns per-file pass/fail.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dir": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  ]
+}
